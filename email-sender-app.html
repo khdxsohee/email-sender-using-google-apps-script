@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Email Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Modern Styles (same as before) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 30px 25px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    form:hover {
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #f9f9f9;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #2196f3;
+      background-color: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background-color: #2196f3;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1976d2;
+    }
+
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 16px;
+      color: #2e7d32;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+ <!-- Paste You_Apps_script_url here -->
+  
+  <form action="YOUR_APPS_SCRIPT_URL" 
+        method="POST" 
+        target="hidden_iframe" 
+        onsubmit="handleSubmit();">
+    <h2 style="text-align:center; margin-bottom: 20px; color:#333;">Send an Email</h2>
+    <input type="email" name="email" placeholder="Recipient Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+    <p id="status"></p>
+  </form>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <script>
+    let formSubmitted = false;
+
+    function handleSubmit() {
+      formSubmitted = true;
+      document.getElementById('status').innerText = 'Sending...';
+    }
+
+    window.addEventListener('load', () => {
+      const iframe = document.querySelector('iframe');
+      iframe.onload = function () {
+        if (formSubmitted) {
+          document.getElementById('status').innerText = 'Email sent successfully!';
+          formSubmitted = false; // reset for future submissions
+        }
+      };
+    });
+  </script>
+
+</body>
+</html>
