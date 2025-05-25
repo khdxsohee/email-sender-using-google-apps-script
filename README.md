@@ -93,7 +93,7 @@ Then open the HTML file in your browser and test it!
 
 
 ``` 📁 project-root
-├── index.html         # Email form frontend
+├── email-sender-app.html         # Email form frontend
 └── README.md          # This documentation file
 ```
 ---
